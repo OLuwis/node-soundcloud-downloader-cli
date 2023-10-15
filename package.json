@@ -1,6 +1,6 @@
 {
   "name": "soundcloud-crawler",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A SoundCloud Web Crawler for music downloading.",
   "main": "main.js",
   "scripts": {
@@ -17,6 +17,6 @@
   "author": "Luwis",
   "license": "ISC",
   "dependencies": {
-    "ffmpeg-static": "^5.2.0"
+    "@ffmpeg-installer/ffmpeg": "^1.1.0"
   }
 }

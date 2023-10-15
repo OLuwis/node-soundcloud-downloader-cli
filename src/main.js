@@ -1,4 +1,4 @@
-const ffmpegPath = require("ffmpeg-static");
+const ffmpeg = require("@ffmpeg-installer/ffmpeg").path;
 const childProcess = require("child_process");
 const https = require("https");
 const fs = require("fs");
@@ -58,27 +58,7 @@ async function main(url) {
     });
 
     const track_download = childProcess.spawnSync(
-        ffmpegPath,
-        [
-            "-y",
-            "-i",
-            track_stream.url,
-            "-i",
-            `${track_name}.jpg`,
-            "-metadata",
-            `title=${track_title}`,
-            "-metadata",
-            `artist=${track_artist}`,
-            "-metadata",
-            `date=${track_date}`,
-            "-codec",
-            "copy",
-            "-map",
-            "0",
-            "-map",
-            "1",
-            `${track_name}.mp3`
-        ]
+        ffmpeg,["-y", "-i", track_stream.url, "-i", `${track_name}.jpg`, "-metadata", `title=${track_title}`, "-metadata", `artist=${track_artist}`, "-metadata", `date=${track_date}`, "-codec", "copy", "-map", "0", "-map", "1", `${track_name}.mp3`]
     );
 
     if (track_download.status == 0) {
