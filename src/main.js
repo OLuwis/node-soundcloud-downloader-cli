@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const ffmpeg = require("@ffmpeg-installer/ffmpeg").path;
 const childProcess = require("child_process");
 const https = require("https");
