@@ -18,10 +18,9 @@ async function main(url) {
 
     if (ffmpeg === null) {
         if (os.platform() == "win32") {
-            ffmpeg = "C:\\ffmpeg\\bin\\ffmpeg.exe";
-        }
-        if (os.platform() == "android") {
-            ffmpeg = "\\data\\data\\com.termux\\files\\usr\\bin\\ffmpeg"   
+            ffmpeg = "C:\\ffmpeg\\bin\\ffmpeg";
+        } else {
+            ffmpeg = "ffmpeg";
         }
     }
 

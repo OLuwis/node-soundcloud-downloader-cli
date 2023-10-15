@@ -1,6 +1,6 @@
 {
   "name": "soundcloud-crawler",
-  "version": "1.0.1",
+  "version": "1.0.5",
   "description": "A SoundCloud Web Crawler for music downloading.",
   "main": "main.js",
   "bin": "./src/main.js",
