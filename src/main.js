@@ -1,18 +1,29 @@
 #!/usr/bin/env node
 
-const ffmpeg = require("@ffmpeg-installer/ffmpeg").path;
 const childProcess = require("child_process");
 const https = require("https");
 const fs = require("fs");
+const os = require("os");
 
 const args = process.argv;
 if (args.length > 2) {
     main(args[2].trim());
 } else {
     console.log("No SoundCloud Track URL Provided");
-};
+}
 
 async function main(url) {
+
+    let ffmpeg = null;
+
+    if (ffmpeg === null) {
+        if (os.platform() == "win32") {
+            ffmpeg = "C:\\ffmpeg\\bin\\ffmpeg.exe";
+        }
+        if (os.platform() == "android") {
+            ffmpeg = "\\data\\data\\com.termux\\files\\usr\\bin\\ffmpeg"   
+        }
+    }
 
     if (!url.includes("soundcloud.com")) {
         return console.log("Invalid SoundCloud Track URL Provided");
@@ -60,14 +71,14 @@ async function main(url) {
     });
 
     const track_download = childProcess.spawnSync(
-        ffmpeg,["-y", "-i", track_stream.url, "-i", `${track_name}.jpg`, "-metadata", `title=${track_title}`, "-metadata", `artist=${track_artist}`, "-metadata", `date=${track_date}`, "-codec", "copy", "-map", "0", "-map", "1", `${track_name}.mp3`]
+        ffmpeg, ["-y", "-i", track_stream.url, "-i", `${track_name}.jpg`, "-metadata", `title=${track_title}`, "-metadata", `artist=${track_artist}`, "-metadata", `date=${track_date}`, "-codec", "copy", "-map", "0", "-map", "1", `${track_name}.mp3`]
     );
 
     if (track_download.status == 0) {
         console.log(`Finished downloading ${track_name}.mp3`);
     } else {
         console.log(`Error downloading ${track_name}.mp3`);
-    };
+    }
     
     fs.unlinkSync(`${track_name}.jpg`);
 };

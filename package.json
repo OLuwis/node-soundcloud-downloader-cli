@@ -16,8 +16,5 @@
     "downloader"
   ],
   "author": "Luwis",
-  "license": "ISC",
-  "dependencies": {
-    "@ffmpeg-installer/ffmpeg": "^1.1.0"
-  }
+  "license": "ISC"
 }
