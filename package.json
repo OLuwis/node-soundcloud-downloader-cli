@@ -1,11 +1,13 @@
 {
-  "name": "soundcloud-crawler",
-  "version": "1.0.5",
-  "description": "A SoundCloud Web Crawler for music downloading.",
-  "main": "main.js",
-  "bin": "./src/main.js",
+  "name": "scdl-node",
+  "version": "1.0.0",
+  "description": "A SoundCloud Downloader made with Node and Typescript",
+  "type": "module",
+  "bin": {
+    "main": "./src/index.js"
+  },
   "scripts": {
-    "start": "node src/main.js"
+    "dev": "tsx src/index.ts"
   },
   "keywords": [
     "soundcloud",
@@ -16,5 +18,17 @@
     "downloader"
   ],
   "author": "Luwis",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@tsconfig/node-lts": "^18.12.5",
+    "@types/node": "^20.8.7",
+    "tsx": "^3.14.0",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.12",
+    "commander": "^11.1.0",
+    "fastq": "^1.15.0",
+    "node-id3": "^0.2.6"
+  }
 }
